@@ -7,36 +7,36 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Lift Simulation</title>
   <link rel="stylesheet" href="css/main.css">
-  <script src="js/main.js"></script>
 </head>
 
 <body>
 
-  <section class="building">
-    <div class="floor row-2">
+  <section class="building" id="main">
+    <div class="floor">
       <div class="controls">
-        <div class="button down-0"></div>
+        <button type="button" class="button button-down"></button>
       </div>
       <div class="lift-space"></div>
       <div class="floor-label"></div>
     </div>
-    <div class="floor row-1">
+    <div class="floor">
       <div class="controls">
-        <div class="button up-1"></div>
-        <div class="button down-1"></div>
+        <button type="button" class="button button-up"></button>
+        <button type="button" class="button button-down"></button>
       </div>
       <div class="lift-space"></div>
       <div class="floor-label"></div>
     </div>
-    <div class="floor row-0">
+    <div class="floor">
       <div class="controls">
-        <div class="button up-0"></div>
+        <button type="button" class="button button-up" onclick=""></button>
       </div>
       <div class="lift-space"></div>
       <div class="floor-label"></div>
     </div>
     <div class="lift lift-0"></div>
   </section>
+  <script src="js/main.js"></script>
 </body>
 
 </html>
