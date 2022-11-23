@@ -39,13 +39,23 @@ div {
   flex-direction: column;
 }
 
+.lift {
+  width: 50px;
+  height: 90px;
+  background: orange;
+
+  position: absolute;
+  bottom: 5px;
+  left: 50%;
+}
+
 .floor {
   height: 100px;
 }
 
 .controls {
   float: left;
-  background: Red;
+  background: red;
   /* margin-left: 10%; */
   width: 10%;
   height: 50%;
@@ -61,7 +71,6 @@ div {
 
 .lift-space {
   float: left;
-  background: Green;
   width: 70%;
   height: 50%;
 }
