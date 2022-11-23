@@ -45,7 +45,7 @@ div {
   background: orange;
 
   position: absolute;
-  bottom: 5px;
+  /* bottom: 5px; */
   left: 50%;
 }
 

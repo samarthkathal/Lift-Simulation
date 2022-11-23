@@ -9,6 +9,7 @@ function generateControlsForFloor(floorNumber, maxAllowedFloors) {
     upButton.classList.add('button', 'button-up');
     upButton.type = "button";
     upButton.id = "floor-" + floorNumber + "-up";
+    upButton.addEventListener('click', liftButtonHandler, false)
 
     controlsWrapper.appendChild(upButton)
   }
@@ -19,6 +20,7 @@ function generateControlsForFloor(floorNumber, maxAllowedFloors) {
       downButton.classList.add('button', 'button-down');
       downButton.type = "button";
       downButton.id = "floor-" + floorNumber + "-down";
+      downButton.addEventListener('click', liftButtonHandler, false)
 
       controlsWrapper.appendChild(downButton)
     }
@@ -32,6 +34,8 @@ function generateControlsForFloor(floorNumber, maxAllowedFloors) {
       downButton.type = "button";
       upButton.id = "floor-" + floorNumber + "-up";
       downButton.id = "floor-" + floorNumber + "-down";
+      upButton.addEventListener('click', liftButtonHandler, false);
+      downButton.addEventListener('click', liftButtonHandler, false)
 
       controlsWrapper.appendChild(upButton);
       controlsWrapper.appendChild(downButton);
@@ -41,7 +45,7 @@ function generateControlsForFloor(floorNumber, maxAllowedFloors) {
   return controlsWrapper;
 }
 
-function generateFloors(floorCount, liftCount) {
+function generateFloors(floorCount) {
   let section = document.getElementById("main");
   for (let i = floorCount - 1; i >= 0; i--) {
     let floor = document.createElement('div');
@@ -64,10 +68,26 @@ function generateFloors(floorCount, liftCount) {
 
     section.appendChild(floor);
   }
+
+  return section;
+}
+
+function generateLifts(section, liftCount) {
+  for (let i = 0; i < liftCount; i++) {
+    let lift = document.createElement('div')
+    lift.classList.add('lift', 'lift-' + i)
+
+    section.appendChild(lift)
+  }
+  return section;
+}
+
+function liftButtonHandler() {
+  alert('1');
 }
 
 function main() {
-  let floorCount = 3;
+  let floorCount = 6;
   let liftCount = 1;
 
   if ((liftCount >= floorCount / 2)) {
@@ -75,7 +95,8 @@ function main() {
     return
   }
 
-  generateFloors(floorCount, liftCount)
+  let section = generateFloors(floorCount, liftCount)
+  section = generateLifts(section, liftCount)
 }
 
 main()
