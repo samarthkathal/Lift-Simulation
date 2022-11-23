@@ -8,7 +8,7 @@ function generateControlsForFloor(floorNumber, maxAllowedFloors) {
 
     upButton.classList.add('button', 'button-up');
     upButton.type = "button";
-    upButton.id = "floor-" + floorNumber + "up";
+    upButton.id = "floor-" + floorNumber + "-up";
 
     controlsWrapper.appendChild(upButton)
   }
@@ -18,7 +18,7 @@ function generateControlsForFloor(floorNumber, maxAllowedFloors) {
 
       downButton.classList.add('button', 'button-down');
       downButton.type = "button";
-      downButton.id = "floor-" + floorNumber + "down";
+      downButton.id = "floor-" + floorNumber + "-down";
 
       controlsWrapper.appendChild(downButton)
     }
@@ -30,8 +30,8 @@ function generateControlsForFloor(floorNumber, maxAllowedFloors) {
       downButton.classList.add('button', 'button-down');
       upButton.type = "button";
       downButton.type = "button";
-      upButton.id = "floor-" + floorNumber + "up";
-      downButton.id = "floor-" + floorNumber + "down";
+      upButton.id = "floor-" + floorNumber + "-up";
+      downButton.id = "floor-" + floorNumber + "-down";
 
       controlsWrapper.appendChild(upButton);
       controlsWrapper.appendChild(downButton);
@@ -43,34 +43,39 @@ function generateControlsForFloor(floorNumber, maxAllowedFloors) {
 
 function generateFloors(floorCount, liftCount) {
   let section = document.getElementById("main");
-  for (let i = 0; i < floorCount; i++) {
+  for (let i = floorCount - 1; i >= 0; i--) {
     let floor = document.createElement('div');
     floor.classList.add('floor');
     floor.id = 'floor-' + i;
 
     let floorWithControls = generateControlsForFloor(i, floorCount);
-    section.appendChild(floorWithControls);
+    floor.appendChild(floorWithControls);
 
     let liftSpace = document.createElement('div')
-    liftSpace.classList.add("list-space");
+    liftSpace.classList.add("lift-space");
 
     let floorLabel = document.createElement('div');
     floorLabel.classList.add("floor-label");
-    floorLabel.createTextNode('floor ' + i)
+    let floorText = document.createTextNode('floor ' + i);
+    floorLabel.appendChild(floorText);
 
-    section.appendChild(liftSpace);
-    section.appendChild(floorLabel);
+    floor.appendChild(liftSpace);
+    floor.appendChild(floorLabel);
+
+    section.appendChild(floor);
   }
 }
 
 function main() {
-  let floorCount = 6;
-  let liftCount = 2;
+  let floorCount = 3;
+  let liftCount = 1;
 
-  if (!(liftCount > floorCount / 2)) {
+  if ((liftCount >= floorCount / 2)) {
     alert("not allowed")
     return
   }
 
   generateFloors(floorCount, liftCount)
 }
+
+main()
