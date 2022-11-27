@@ -41,11 +41,18 @@ div {
 
 .lift {
   width: 50px;
-  height: 90px;
+  height: 100px;
   background: orange;
 
   position: absolute;
-  /* bottom: 5px; */
+  left: 80%;
+}
+
+.lift-inside {
+  width: 2%;
+  height: 100%;
+  background: red;
+
   left: 50%;
 }
 
